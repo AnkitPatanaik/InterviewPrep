@@ -387,7 +387,7 @@ public class BST <T extends Comparable<T>> implements Iterable<T>
 *
 ******************************************************/
 
-   private class Node<T>
+   public class Node<T>
    {
       private T data;
       private Node<T> left, right;
