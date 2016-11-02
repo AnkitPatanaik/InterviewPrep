@@ -2,35 +2,34 @@ import java.util.*;
 
 public class GraphTraversal {
 
-	//pop root of tree
-	//while q is not empty
-		//for each child, add to queue
-		//print children
-	
+	/* Algorithm runs in O(n) time, where n is the number of nodes in the tree */
 	public static void bfs (Node root) {
 		Queue<Node> q = new LinkedList<Node>();
-		q.add(root);
+		q.add(root); //enqueue
 
 		while (!q.isEmpty()) {
-			Node a = q.poll();
-			System.out.print(a.data + " ");
-			if (a.left != null) {
-				q.add(a.left);
-				
-			}
-			if (a.right != null) {
-				q.add(a.right);
-				
-			}
 
+			int levelSize = q.size();
+			while (levelSize > 0) { // this loop is only needed to help print level by level
+
+				Node a = q.poll(); //pop
+				System.out.print(a.data + " ");
+
+				if (a.left != null) {
+					q.add(a.left);
+				}
+				if (a.right != null) {
+					q.add(a.right);
+				}
+				levelSize--;
+			}
 			System.out.println();
 		}
-
 	}
 
 	public static void main (String[] args) {
-		Integer[] a = {1,0,2,10,7,6,11,25,9,14};
-      	Node bst = new Node(15);
+		Integer[] a = {3,0,2,15,7,6,11,25,9,14};
+      	Node bst = new Node(10);
       	for(Integer n : a) bst.insert(bst, n);
       	//bst.inOrderTraversal(bst);
 
