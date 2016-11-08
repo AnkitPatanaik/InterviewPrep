@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Subsequence {
 	
-	/* Return the longest increasing subsequence in an array */
+	/* Return the longest increasing subsarray in an array */
 	public static int[] longestIncreasing(int[] array) {
 		int min = Integer.MIN_VALUE;
 		int[] temp = new int[array.length];
@@ -35,7 +35,17 @@ public class Subsequence {
 		return findLongest(list);
 	}
 
-	private static int[] partArray(int[] array, int size) {
+	//return maximum subarray in an array
+	public static int[] maxSubarray(int[] array) {
+		return null;
+	}
+
+	//return maximum subarray in an array less than k
+	public static int[] maxSubarray(int[] array, int k) {
+		return null;
+	}
+
+	public static int[] partArray(int[] array, int size) {
     	int[] part = new int[size];
     	System.arraycopy(array, 0, part, 0, size);
     	return part;
