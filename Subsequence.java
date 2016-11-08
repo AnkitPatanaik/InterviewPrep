@@ -8,21 +8,20 @@ public class Subsequence {
 		int[] temp = new int[array.length];
 		int index = 0;
 		ArrayList<int[]> list = new ArrayList<int[]>();
-		boolean test = false;
-
+		
 		for (int i = 0; i < array.length; i++) {
 			int a = array[i];
-			if (a > min) { //add to array
+			if (a > min) { 
+				//add to array
 				temp[index++] = a;
 				min = a;
 			}
 			else {
 				//reset min
-				test = true; //for edge case
 				min = Integer.MIN_VALUE;
 
 				//trim zeros
-				int[] part = partArray(temp, index);
+				int[] part = partArray(temp, index); //how do i get rid of this lawl
 				list.add(part);
 
 				//reset temp array;
@@ -30,8 +29,9 @@ public class Subsequence {
 				index = 0;
 			}
 		}
-		list.add(partArray(temp, index)); //edge case if array == longest increasing subarry
-
+		//edge case if longest increasing subsequence includes last element
+		list.add(partArray(temp, index)); 
+		
 		return findLongest(list);
 	}
 
@@ -69,7 +69,7 @@ public class Subsequence {
 		int[] test2 = {-6,-5,-1,-10,1,2,3,4,5,6}; /* 1,2,3,4,5,6 */
 		int[] test3 = {5,1,6,2,7,3,8,6,10}; /* return 1 element */
 		int[] test4 = {1,2,3}; /* 1,2,3 */
-		int[] test5 = {1,2,3,-100,5,6,7,8,9}; /* 5,6,7,8,9 */
+		int[] test5 = {1,2,3,-100,5,6,7,8,1}; /* 5,6,7,8 */
 		
 		printArray(longestIncreasing(test1));
 		printArray(longestIncreasing(test2));
