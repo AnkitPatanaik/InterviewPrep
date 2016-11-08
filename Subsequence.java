@@ -8,6 +8,7 @@ public class Subsequence {
 		int[] temp = new int[array.length];
 		int index = 0;
 		ArrayList<int[]> list = new ArrayList<int[]>();
+		boolean test = false;
 
 		for (int i = 0; i < array.length; i++) {
 			int a = array[i];
@@ -17,18 +18,42 @@ public class Subsequence {
 			}
 			else {
 				//reset min
+				test = true; //for edge case
 				min = Integer.MIN_VALUE;
-				list.add(temp);
+
+				//trim zeros
+				int[] part = partArray(temp, index);
+				list.add(part);
+
 				//reset temp array;
 				temp = new int[array.length];
 				index = 0;
 			}
 		}
+		list.add(partArray(temp, index)); //edge case if array == longest increasing subarry
+
 		return findLongest(list);
 	}
 
+	private static int[] partArray(int[] array, int size) {
+    	int[] part = new int[size];
+    	System.arraycopy(array, 0, part, 0, size);
+    	return part;
+	}
+
 	public static int[] findLongest(ArrayList<int[]> list) {
-		return null;
+		int maxIndex = 0;
+		int maxLength = 0;
+		
+		for (int i = 0; i < list.size(); i++) {
+			int[] array = list.get(i);
+			if (array.length > maxLength) {
+				maxLength = array.length;
+				maxIndex = i;
+			}
+		}
+
+		return list.get(maxIndex);
 	}
 
 	public static void printArray(int[] a) {
@@ -37,17 +62,14 @@ public class Subsequence {
 			System.out.print(a[i] + " ");
 		}
 		System.out.println();
-		System.out.println("--------");
-		System.out.println();
 	}
 
 	public static void main(String[] args) {
 		int[] test1 = {1,2,3,4,5,6,-5,-6}; /* 1,2,3,4,5,6 */
-		int[] test2 = {-6,-9,-10,1,2,3,4,5,6}; /* 1,2,3,4,5,6 */
+		int[] test2 = {-6,-5,-1,-10,1,2,3,4,5,6}; /* 1,2,3,4,5,6 */
 		int[] test3 = {5,1,6,2,7,3,8,6,10}; /* return 1 element */
 		int[] test4 = {1,2,3}; /* 1,2,3 */
 		int[] test5 = {1,2,3,-100,5,6,7,8,9}; /* 5,6,7,8,9 */
-
 		
 		printArray(longestIncreasing(test1));
 		printArray(longestIncreasing(test2));
