@@ -66,7 +66,7 @@ public class Subsequence {
 
 	public static void main(String[] args) {
 		int[] test1 = {1,2,3,4,5,6,-5,-6}; /* 1,2,3,4,5,6 */
-		int[] test2 = {-6,-5,-1,-10,1,2,3,4,5,6}; /* 1,2,3,4,5,6 */
+		int[] test2 = {-6,-5,-1,-10,2,3,4,5,6}; /* 1,2,3,4,5,6 */
 		int[] test3 = {5,1,6,2,7,3,8,6,10}; /* return 1 element */
 		int[] test4 = {1,2,3}; /* 1,2,3 */
 		int[] test5 = {1,2,3,-100,5,6,7,8,1}; /* 5,6,7,8 */
